@@ -134,10 +134,17 @@
         if (!match) throw new Error("This image format could not be read. Try a JPG or PNG.");
         parts.push({ inline_data: { mime_type: match[1], data: match[2] } });
       }
-      const answer = await callGemini(parts, apiHistory().slice(0, -1));
-      addMessage("assistant", answer);
-      remember("model", answer);
-      speak(answer);
+      const toolResult = imageData ? null : await handleTools(text);
+      if (toolResult !== null) {
+        addMessage("assistant", toolResult);
+        remember("model", toolResult);
+        speak(toolResult);
+      } else {
+        const answer = await callGemini(parts, apiHistory().slice(0, -1));
+        addMessage("assistant", answer);
+        remember("model", answer);
+        speak(answer);
+      }
     } catch (error) {
       addMessage("assistant", "I couldn't complete that request: " + error.message);
       setState("ERROR", "CHECK CONNECTION");
