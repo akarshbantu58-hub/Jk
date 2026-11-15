@@ -1,0 +1,10 @@
+name = "jarvis-automation"
+main = "functions/worker.js"
+compatibility_date = "2026-11-15"
+
+[triggers]
+crons = ["30 1 * * *"]
+
+[vars]
+WEATHER_LAT = "16.5062"
+WEATHER_LON = "80.6480"
