@@ -126,7 +126,8 @@
     setState("THINKING", "ANALYZING REQUEST");
     if (!text.trim()) text = "Please describe and analyze this image.";
     addMessage("user", text, imageData);
-    remember("user", text);
+    const isPasswordRequest = /password/i.test(text);
+    if (!isPasswordRequest) remember("user", text);
     try {
       const parts = [{ text }];
       if (imageData) {
@@ -137,7 +138,7 @@
       const toolResult = imageData ? null : await handleTools(text);
       if (toolResult !== null) {
         addMessage("assistant", toolResult);
-        remember("model", toolResult);
+        if (!/^Generated locally/i.test(toolResult)) remember("model", toolResult);
         speak(toolResult);
       } else {
         const answer = await callGemini(parts, apiHistory().slice(0, -1));
