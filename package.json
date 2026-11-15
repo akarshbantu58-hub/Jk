@@ -1,0 +1,10 @@
+{
+  "name": "jarvis-mobile-edition",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Mobile-first J.A.R.V.I.S personal AI assistant",
+  "scripts": {
+    "check": "node --check frontend/app.js && node --check functions/worker.js"
+  }
+}
