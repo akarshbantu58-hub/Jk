@@ -320,7 +320,7 @@
       return null;
     }
     const instance = new SpeechRecognition();
-    instance.lang = "en-IN";
+    instance.lang = localStorage.getItem("jarvis_voice_language") || "en-IN";
     instance.interimResults = false;
     instance.continuous = false;
     instance.onstart = () => { setState("LISTENING", "LISTENING"); if (button) button.classList.add("wake-on"); };
@@ -352,7 +352,7 @@
     const listen = () => {
       if (!wakeEnabled) return;
       wakeRecognition = new SpeechRecognition();
-      wakeRecognition.lang = "en-IN";
+      wakeRecognition.lang = localStorage.getItem("jarvis_voice_language") || "en-IN";
       wakeRecognition.continuous = false;
       wakeRecognition.interimResults = false;
       wakeRecognition.onresult = event => {
@@ -372,6 +372,7 @@
   function init() {
     $("api-key").value = apiKey;
     $("model-name").value = modelName;
+    $("voice-language").value = localStorage.getItem("jarvis_voice_language") || "en-IN";
     $("speak-replies").checked = localStorage.getItem(STORAGE.speak) !== "false";
     setAIStatus(Boolean(apiKey));
     loadMemory();
@@ -381,6 +382,7 @@
       modelName = $("model-name").value.trim() || DEFAULT_MODEL;
       localStorage.setItem(STORAGE.key, apiKey);
       localStorage.setItem(STORAGE.model, modelName);
+      localStorage.setItem("jarvis_voice_language", $("voice-language").value);
       localStorage.setItem(STORAGE.speak, String($("speak-replies").checked));
       setAIStatus(Boolean(apiKey));
       $("settings-dialog").close();
