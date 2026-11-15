@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#07111d">
+  <meta name="description" content="J.A.R.V.I.S personal mobile AI assistant">
+  <title>J.A.R.V.I.S — Mobile Edition</title>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="JARVIS home"><span class="brand-mark">J</span><span><strong>J.A.R.V.I.S</strong><small>MOBILE EDITION</small></span></a>
+      <div class="top-actions">
+        <span class="ready-badge"><i></i><span id="system-status">SYSTEM READY</span></span>
+        <button class="icon-btn" id="wake-btn" title="Experimental foreground wake mode" aria-label="Toggle wake mode">🎙</button>
+        <button class="icon-btn" id="settings-btn" title="Settings" aria-label="Open settings">⚙</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">PERSONAL ARTIFICIAL INTELLIGENCE</p>
+          <h1>Your world.<br><span>Your commands.</span></h1>
+          <p class="muted">An intelligent assistant built for your mobile workflow.</p>
+          <div class="hero-actions">
+            <button class="primary-btn" id="focus-chat">START CONVERSATION <span>↗</span></button>
+            <button class="secondary-btn" id="install-btn" hidden>INSTALL APP</button>
+          </div>
+        </div>
+        <div class="core-wrap" aria-label="JARVIS system core">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div>
+          <div class="core-glow"></div><div class="core"><span>J</span></div>
+          <div class="core-caption"><i></i><span id="core-state">CORE STANDBY</span></div>
+        </div>
+      </section>
+
+      <section class="status-grid" aria-label="System diagnostics">
+        <article class="status-card"><span class="status-icon">◈</span><div><small>AI ENGINE</small><strong id="ai-status">KEY REQUIRED</strong></div></article>
+        <article class="status-card"><span class="status-icon">⌁</span><div><small>VOICE INTERFACE</small><strong id="voice-status">AVAILABLE</strong></div></article>
+        <article class="status-card"><span class="status-icon">▤</span><div><small>LONG-TERM MEMORY</small><strong id="memory-status">ACTIVE</strong></div></article>
+      </section>
+
+      <section class="workspace" id="chat-section">
+        <div class="section-heading"><div><p class="eyebrow">INTERFACE 01</p><h2>Command Center</h2></div><button class="text-btn" id="clear-btn">CLEAR CHAT</button></div>
+        <div class="chat-panel">
+          <div class="chat-log" id="chat" aria-live="polite">
+            <div class="message assistant"><span class="avatar">J</span><div class="bubble"><small>J.A.R.V.I.S</small><p>Systems online. Configure your Gemini key in Settings, then tell me what you need.</p></div></div>
+          </div>
+          <div class="composer">
+            <textarea id="msg" rows="1" placeholder="Enter a command for J.A.R.V.I.S..." aria-label="Message"></textarea>
+            <div class="composer-actions">
+              <label class="attach-btn" title="Analyze an image">＋<input id="img-input" type="file" accept="image/*" hidden></label>
+              <button class="icon-btn mic-btn" id="mic-btn" aria-label="Start voice input" title="Voice input">🎙</button>
+              <button class="send-btn" id="send-btn">SEND <span>➤</span></button>
+            </div>
+          </div>
+          <p class="composer-hint">Enter to send · Shift + Enter for a new line · Image analysis supported</p>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <div class="section-heading"><div><p class="eyebrow">INTERFACE 02</p><h2>Tools & capabilities</h2></div><span class="tiny-label">15 CLIENT TOOLS</span></div>
+        <div class="tools-grid">
+          <button class="tool-card" data-command="What time is it?"><span>◷</span><b>Time</b><small>Local clock</small></button>
+          <button class="tool-card" data-command="What's the weather near me?"><span>☼</span><b>Weather</b><small>Live conditions</small></button>
+          <button class="tool-card" data-command="Set a timer for 1 minute"><span>◴</span><b>Timer</b><small>Voice alert</small></button>
+          <button class="tool-card" data-command="Flip a coin"><span>⚄</span><b>Dice / Coin</b><small>Random result</small></button>
+          <button class="tool-card" data-command="Tell me a joke"><span>☺</span><b>Random joke</b><small>Quick break</small></button>
+          <button class="tool-card" data-command="Give me a daily quote"><span>✦</span><b>Daily quote</b><small>Inspiration</small></button>
+          <button class="tool-card" data-command="Show latest tech news"><span>▤</span><b>Tech news</b><small>Live headlines</small></button>
+          <button class="tool-card" data-command="Translate hello to Telugu"><span>文</span><b>Translator</b><small>English → Telugu</small></button>
+          <button class="tool-card" data-command="Convert 100 USD to INR"><span>₹</span><b>Currency</b><small>Exchange rates</small></button>
+          <button class="tool-card" data-command="Define the word curiosity"><span>字</span><b>Dictionary</b><small>Word meaning</small></button>
+          <button class="tool-card" data-command="Generate a strong password"><span>⌑</span><b>Password</b><small>On-device only</small></button>
+          <button class="tool-card" data-command="Search Wikipedia for artificial intelligence"><span>W</span><b>Wikipedia</b><small>Knowledge search</small></button>
+          <button class="tool-card" data-command="Open Google"><span>↗</span><b>Open apps</b><small>Web shortcuts</small></button>
+          <button class="tool-card" data-command="Search YouTube for space documentary"><span>▶</span><b>YouTube</b><small>Video search</small></button>
+          <button class="tool-card" data-command="What's the Bitcoin price?"><span>₿</span><b>Crypto price</b><small>Market data</small></button>
+        </div>
+      </section>
+
+      <section class="workspace agent-panel">
+        <div class="section-heading"><div><p class="eyebrow">INTERFACE 03</p><h2>Autonomous agent</h2></div><span class="tiny-label">THINK → ACT → OBSERVE</span></div>
+        <p class="muted">Give J.A.R.V.I.S a goal. It can plan supported steps, fetch public information and summarize the results. It will ask before any action outside this app.</p>
+        <div class="agent-row"><input id="goal-input" placeholder="Example: Give me a morning briefing" aria-label="Agent goal"><button class="primary-btn" id="agent-btn">RUN GOAL ↗</button></div>
+        <div id="agent-steps" class="agent-steps" aria-live="polite"></div>
+      </section>
+    </main>
+    <footer><span>J.A.R.V.I.S MOBILE EDITION</span><span>BUILT TO ASSIST · NOT TO REPLACE YOUR JUDGMENT</span></footer>
+  </div>
+
+  <dialog id="settings-dialog" class="settings-dialog">
+    <form method="dialog" class="dialog-head"><div><p class="eyebrow">CONFIGURATION</p><h2>System settings</h2></div><button class="icon-btn" aria-label="Close">✕</button></form>
+    <div class="settings-body">
+      <label for="api-key">Gemini API key</label><input id="api-key" type="password" autocomplete="off" placeholder="Paste your personal API key">
+      <p class="setting-note">Stored only in this browser's local storage. It is sent to Google's Gemini API when you chat. Never commit it to GitHub or share it.</p>
+      <label for="model-name">Gemini model</label><input id="model-name" value="gemini-3.8-flash" spellcheck="false">
+      <label class="check-row"><input type="checkbox" id="speak-replies" checked> Speak assistant replies</label>
+      <div class="settings-actions"><button type="button" class="secondary-btn" id="forget-key">REMOVE KEY</button><button type="button" class="primary-btn" id="save-settings">SAVE SETTINGS</button></div>
+      <p class="setting-note">Memory and reminders are stored on this device. Use Clear memory to erase saved conversation context.</p>
+      <button type="button" class="text-btn danger" id="clear-memory">CLEAR LONG-TERM MEMORY</button>
+    </div>
+  </dialog>
+  <script src="./app.js" defer></script>
+</body>
+</html>
