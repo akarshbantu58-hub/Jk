@@ -3,8 +3,8 @@
  * Configure TOKEN and CHAT_ID as Cloudflare Worker secrets.
  * Optional variables: WEATHER_LAT, WEATHER_LON.
  */
-const DEFAULT_LAT = "16.5062";
-const DEFAULT_LON = "80.6480";
+const DEFAULT_LAT = "17.3850";
+const DEFAULT_LON = "78.4867";
 
 export default {
   async scheduled(controller, env, ctx) {
